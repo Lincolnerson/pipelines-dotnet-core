@@ -29,7 +29,7 @@ stages:
             displayName: "dotnet publish --configuration $(buildConfiguration)"
       
   - stage: DEV
-    condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/DEV'))
+    condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/DEV')))
     dependsOn: Build
     variables:
       -group: "Testing app - DEV"
@@ -38,7 +38,7 @@ stages:
       displayName: DEV Job
 
   - stage: master
-    condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master')))
     dependsOn: Build
     variables:
       -group: "Testing app - Master / QA"
