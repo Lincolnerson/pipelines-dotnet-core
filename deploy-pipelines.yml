@@ -34,8 +34,8 @@ stages:
     variables:
       -group: "Testing app - DEV"
     jobs:
-      - job:
-          displayName: "deploy the DEV code"
+    - job: DEVJob
+      displayName: DEV Job
 
   - stage: master
     condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master')))
@@ -43,7 +43,7 @@ stages:
     variables:
       -group: "Testing app - Master / QA"
     jobs:
-      - job:
-          displayName: "deploy the QA code"
+    - job: QAJob
+      displayName: QA Job
 
 
