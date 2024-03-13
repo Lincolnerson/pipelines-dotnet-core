@@ -9,10 +9,6 @@ pool:
 variables:
   buildConfiguration: 'Release'
 
-steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
-
 stages:
   - stage: Build
     jobs:
@@ -23,8 +19,8 @@ stages:
           - task: UseDotNet@2
             displayName: "Use .NET 7.X"
             inputs:
-              packageType:"sdk"
-              version:"7.x"
+              packageType: 'sdk'  # Corrected indentation and added single quotes
+              version: '7.x'     # Corrected indentation and added single quotes
           
           - script: dotnet restore
             displayName: "dotnet restore"
