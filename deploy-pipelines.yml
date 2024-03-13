@@ -2,7 +2,7 @@ trigger:
   branches:
     include:
       - DEV # goes to DEV environment
-
+      - master  # goes to QA environment
 pool:
   vmImage: ubuntu-latest
 
@@ -27,3 +27,21 @@ stages:
 
           - script: dotnet publish --configuration $(buildConfiguration)
             displayName: "dotnet publish --configuration $(buildConfiguration)"
+      
+  - stage: DEV
+    condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/DEV')))
+    dependsOn: Build
+    variables:
+      -group: "Testing app - DEV"
+    jobs:
+      displayName: "deploy the DEV code"
+
+  - stage: master
+    condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master')))
+    dependsOn: Build
+    variables:
+      -group: "Testing app - Master / QA"
+    jobs:
+      displayName: "deploy the QA code"
+
+
