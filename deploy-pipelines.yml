@@ -32,7 +32,7 @@ stages:
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/DEV'))
     dependsOn: Build
     variables:
-      -group: "Web Config - DEV"
+      - group: "Web Config - DEV"
     jobs:
     - job: DEVJob
       displayName: DEV Job
@@ -43,7 +43,7 @@ stages:
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     dependsOn: Build
     variables:
-      -group: "Web Config - QA"
+      - group: "Web Config - QA"
     jobs:
     - job: QAJob
       displayName: QA Job
