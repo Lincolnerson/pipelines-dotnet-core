@@ -32,18 +32,18 @@ stages:
     condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/DEV')))
     dependsOn: Build
     variables:
-      -group: "Testing app - DEV"
+      -group: "Web Config - DEV"
     jobs:
     - job: DEVJob
-      displayName: DEV Job
+      displayName: $(VAR-01)
 
   - stage: master
     condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master')))
     dependsOn: Build
     variables:
-      -group: "Testing app - Master / QA"
+      -group: "Web Config - QA"
     jobs:
     - job: QAJob
-      displayName: QA Job
+      displayName: $(VAR-01)
 
 
