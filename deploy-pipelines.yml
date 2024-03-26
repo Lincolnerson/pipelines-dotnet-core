@@ -22,10 +22,10 @@ stages:
               packageType: 'sdk'  # Corrected indentation and added single quotes
               version: '7.x'     # Corrected indentation and added single quotes
           
-          - script: dotnet restore
+          - script: dotnet restore pipelines-dotnet-core.csproj
             displayName: "dotnet restore"
 
-          - script: dotnet publish --configuration $(buildConfiguration)
+          - script: dotnet publish pipelines-dotnet-core.csproj --configuration $(buildConfiguration)
             displayName: "dotnet publish --configuration $(buildConfiguration)"
       
   - stage: DEV
