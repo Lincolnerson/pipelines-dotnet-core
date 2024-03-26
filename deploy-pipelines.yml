@@ -35,7 +35,9 @@ stages:
       -group: "Web Config - DEV"
     jobs:
     - job: DEVJob
-      displayName: $(VAR-01)
+      displayName: DEV Job
+      steps:
+      - bash: echo $(VAR-01)
 
   - stage: master
     condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master')))
@@ -44,6 +46,8 @@ stages:
       -group: "Web Config - QA"
     jobs:
     - job: QAJob
-      displayName: $(VAR-01)
+      displayName: QA Job
+      steps:
+      - bash: echo $(VAR-01)
 
 
